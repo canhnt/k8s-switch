@@ -1,4 +1,6 @@
 #!/bin/bash
+DEFAULT_NAMESPACE="ondemand2"
+K8S_ROOT="/opt/k8s"
 
 function set_iterm2_title() {
 	TITLE=$1
@@ -29,10 +31,10 @@ case $1 in
 		;;
 esac
 if [[ -z $NAMESPACE ]]; then
-	NAMESPACE="ondemand2"
+	NAMESPACE=$DEFAULT_NAMESPACE
 fi
 
-STACKROOT="$OD2DOC/k8s/$STACKNAME.onehippo.io"
+STACKROOT="$K8S_ROOT/k8s/$STACKNAME.onehippo.io"
 echo "Loading config for $STACKNAME stack, namespace $NAMESPACE at $STACKROOT"
 
 export KUBECONFIG="$STACKROOT/kubeconfig"
